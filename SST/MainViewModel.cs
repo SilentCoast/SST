@@ -147,6 +147,7 @@ namespace SST
                             {
                                 MessageBox.Show("We are not yet able to process that many points, try selecting smaller files or less files at a time");
                                 success = false;
+                                loopState.Break();
                             }
                             catch (Exception e)
                             {

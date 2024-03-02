@@ -156,11 +156,11 @@ namespace SST
                             }
                         });
                     });
+                    if (success)
+                    {
+                        MessageBox.Show("Export finished");
+                    }
                 }
-            }
-            if (success)
-            {
-                MessageBox.Show("Export finished");
             }
             IsProcessing = false;
         }));

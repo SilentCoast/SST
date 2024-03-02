@@ -17,5 +17,7 @@ Known problems:
 
 After quick research I found out that there is a core library: *Autodesk.Revit*, and additional libraries, such: *RevitAPIUI*, *RevitAPIUIAutomation*, *RevitTestFramework*, which all depend on the core one
 
-So for starters I would go with *Autodesk.Revit* and some inconvinience occur, I'd look into other libs
+So for starters I would go with *Autodesk.Revit* and if some inconvinience occur, I'd look into other libs.
+
+But of course before working with it additional research is required
 

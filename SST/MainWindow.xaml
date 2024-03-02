@@ -1,0 +1,71 @@
+﻿<Window x:Class="SST.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SST"
+        mc:Ignorable="d"
+        d:DataContext="{d:DesignInstance Type=local:MainViewModel}"
+        xmlns:converters="clr-namespace:SST.Converters"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:oxy="http://oxyplot.org/wpf"
+        Title="SST" Height="450" Width="800"
+        Closing="Window_Closing">
+    <Window.Resources>
+        <converters:ReverseBooleanConverter x:Key="reverseBool"/>
+        <converters:ProcessingToTextConverter x:Key="processingToText"/>
+    </Window.Resources>
+    <Grid IsEnabled="{Binding IsProcessing, Converter={StaticResource reverseBool}}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="1" Margin="15">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="130"></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <StackPanel HorizontalAlignment="Center" Orientation="Vertical">
+                <StackPanel Orientation="Horizontal">
+                    <TextBox Width="70" materialDesign:HintAssist.Hint="X" 
+                             Text="{Binding X}"
+                             Style="{StaticResource MaterialDesignFilledTextBox}"></TextBox>
+                    
+                    <Separator Style="{StaticResource separatorWidthMedium}"/>
+
+                    <TextBox Width="70" materialDesign:HintAssist.Hint="Y" 
+                             Text="{Binding Y}"
+                             Style="{StaticResource MaterialDesignFilledTextBox}"></TextBox>
+                    
+                    <Separator Style="{StaticResource separatorWidthMedium}"/>
+                    
+                    <Button Content="Add" Command="{Binding AddPoint}"></Button>
+                </StackPanel>
+                <Separator Style="{StaticResource separatorHeightMedium}"/>
+
+                <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                    <Button Command="{Binding Export}" Content="Export"></Button>
+                    <Separator Style="{StaticResource separatorWidthMedium}"/>
+                    <Button Command="{Binding Import}" Content="Import"></Button>
+                </StackPanel>
+
+            </StackPanel>
+            <DataGrid Grid.Row="1" ItemsSource="{Binding Points}" AutoGenerateColumns="False">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="X" Binding="{Binding X}"/>
+                    <DataGridTextColumn Header="Y" Binding="{Binding Y}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center"
+                       Text="{Binding IsProcessing,Converter={StaticResource processingToText}}"
+                       Style="{StaticResource MaterialDesignBody1TextBlock}"></TextBlock>
+            <oxy:PlotView Grid.Row="1" Padding="15" Model="{Binding plotModel}"></oxy:PlotView>
+        </Grid>
+    </Grid>
+</Window>

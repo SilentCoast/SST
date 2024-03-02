@@ -8,7 +8,7 @@ To check Import/Export functionality you can use files provided at [SST/TestPoin
 
 Known problems:
 
--graph is not visually updated till you drag or zoom it (to work around that added text to show user that they need to drag or zoom)
+-Graph is not visually updated till you drag or zoom it (to work around that added text to show user that they need to drag or zoom)
 
 -Even though OutOfMemoryException is cathed, it still crashes the programm
 

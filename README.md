@@ -4,6 +4,8 @@
 
 To check Import/Export functionality you can use files provided at [SST/TestPoints](SST/TestPoints)
 
+*Note that multiselection of files is available
+
 ---
 
 Known problems:
